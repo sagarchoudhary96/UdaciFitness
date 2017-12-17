@@ -10,7 +10,7 @@ export const submitEntry = ({key, entry }) =>{
 export const removeEntry = (key) => {
   return AsyncStorage.getItem(CALENDAR_STORAGE_KEY)
     .then((result)=> {
-      const data = JSON.parse(results)
+      const data = JSON.parse(result)
       data[key] = undefined
       delete data[key]
       AsyncStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(data))
