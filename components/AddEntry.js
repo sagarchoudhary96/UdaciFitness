@@ -6,7 +6,7 @@ import Usteppers from './Usteppers'
 import DateHeader from './DateHeader'
 import {Ionicons} from '@expo/vector-icons'
 import TextButton from './TextButton'
-
+import { submitEntry, removeEntry } from '../utils/api'
 
 function SubmitBtn ({onPress}) {
   return (
@@ -71,7 +71,7 @@ export default class AddEntry extends Component {
     //update redux
     //navigate to home
     //save to database
-
+    submitEntry({key, entry})
     //clear notification
   }
 
@@ -89,7 +89,7 @@ export default class AddEntry extends Component {
     //update redux
     //navigate to home
     //save to database
-
+    removeEntry(key)
     //clear notification
 
   }
