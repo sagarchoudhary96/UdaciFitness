@@ -35,7 +35,7 @@ class History extends Component {
           <DateHeader date={formattedDate} />
           <Text style={styles.noDataText}> {today} </Text>
         </View>
-        : <TouchableOpacity onPress={()=>console.log("pressed")}>
+        : <TouchableOpacity onPress={()=>this.props.navigation.navigate('EntryDetail', {entryId: key})}>
           <MetricCard metrics = {metrics} date = {formattedDate}/>
         </TouchableOpacity>
       }
@@ -68,7 +68,7 @@ class History extends Component {
   }
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
   item: {
     backgroundColor: white,
     borderRadius: Platform.OS ==='ios'? 16 : 2,
