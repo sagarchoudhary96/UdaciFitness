@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, Platform, StyleSheet } from 'react-native'
-import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helper'
+import { getMetricMetaInfo, timeToString, getDailyReminderValue, clearLocalNotification, setLocalNotification } from '../utils/helper'
 import Uslider from './Uslider'
 import Usteppers from './Usteppers'
 import DateHeader from './DateHeader'
@@ -80,9 +80,11 @@ class AddEntry extends Component {
     //update redux
     //navigate to home
     //save to database
-    submitEntry({key, entry})
     this.toHome()
-    //clear notification
+    submitEntry({key, entry})
+
+    clearLocalNotification()
+      .then(setLocalNotification)
   }
 
   reset = () => {
@@ -92,10 +94,8 @@ class AddEntry extends Component {
       [key]: getDailyReminderValue()
     }))
 
-    removeEntry(key)
-
     this.toHome()
-
+    removeEntry(key)
   }
 
   toHome = () => {
